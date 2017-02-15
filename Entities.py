@@ -21,15 +21,15 @@ class Entities(object):
         self.setDefaults()
 
     def setDefaults(self):
-        if not self.codedict.has_key('67'):
+        if '67' not in self.codedict:
             self.codedict['67'] = 0
-        if not self.codedict.has_key('6'):
+        if '6' not in self.codedict:
             self.codedict['6'] = 'BYLAYER'
-        if not self.codedict.has_key('62'):
+        if '62' not in self.codedict:
             self.codedict['62'] = 'BYLAYER'
-        if not self.codedict.has_key('48'):
+        if '48' not in self.codedict:
             self.codedict['48'] = '1.0'
-        if not self.codedict.has_key('60'):
+        if '60' not in self.codedict:
             self.codedict['60'] = '0'
 
     def __str__(self):
@@ -62,5 +62,5 @@ class Line(Entities):
 if __name__ == '__main__':
     print("Entities as main")
 
-    #   a = Entities()
-    b = Line()
+    a = Entities()
+    #b = Line()

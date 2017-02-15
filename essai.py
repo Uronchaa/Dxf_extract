@@ -33,7 +33,7 @@ class Dxf:
         """
         code = f.readline().strip('\n').strip()
         value = f.readline().strip('\n').strip()
-        return (code, value)
+        return code, value
 
     def readfile(self, dxffile):
         with open(dxffile, 'r') as f:
@@ -103,4 +103,4 @@ class Thumbnailimage(Section):
     None
 
 
-a = Dxf('Piece2.DXF')
+a = Dxf('Gear Sample-iss4.DXF')
