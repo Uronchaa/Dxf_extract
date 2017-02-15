@@ -5,7 +5,7 @@ Created on 23 nov. 2015
 @author: ade
 """
 
-from Entities import *
+from src.base.Entities import *
 
 
 class Dxf:
@@ -103,4 +103,4 @@ class Thumbnailimage(Section):
     None
 
 
-a = Dxf('Gear Sample-iss4.DXF')
+a = Dxf('io/Gear Sample-iss4.DXF')
