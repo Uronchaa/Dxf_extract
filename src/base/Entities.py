@@ -105,11 +105,8 @@ class ELLIPSE(Entities):
 
 class HATCH(Entities):
     # TODO = implement data retrieval for HATCH entities
-    Boundary
-    Path
-    Data
-    Pattern
-    Data
+    # Boundary Path Data
+    # Pattern Data
     pass
 
 

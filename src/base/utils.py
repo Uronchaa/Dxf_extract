@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Created on 23 nov. 2015
@@ -9,23 +10,18 @@ from src.base.Entities import *
 
 
 class Dxf:
-    section = {'HEADER': [],
-               'CLASSES': [],
-               'TABLES': [],
-               'BLOCKS': [],
-               'ENTITIES': [],
-               'OBJECTS': [],
-               'THUMBNAILIMAGE': []
-               }
+    _sections = ['HEADER', 'CLASSES', 'TABLES', 'BLOCKS', 'ENTITIES', 'OBJECTS', 'THUMBNAILIMAGE']
 
-    def __init__(self, dxffile):
+    def __init__(self, dxffile=''):
 
-        if dxffile == '': pass
-        self.readfile(dxffile)
-        self.entlist = self.readsection(*self.section['ENTITIES'])
-        self.entity = []
-        for item in self.entlist:
-            self.entity.append(createObj(item))
+        self.sect = {k: [] for k in self._sections}
+
+        if dxffile is not '':
+            self.readfile(dxffile)
+            self.entlist = self.readsection(*self.sect['ENTITIES'])
+            self.entity = []
+            for item in self.entlist:
+                self.entity.append(createObj(item))
 
     def readcode(self, f):
         """
@@ -42,11 +38,10 @@ class Dxf:
                 if out == ('0', 'SECTION'):
                     out = self.readcode(f)
                     sect = out[1]
-                    print
-                    sect
+                    print(sect)
                     out = self.readcode(f)
                     while out[1] != "ENDSEC":
-                        self.section[sect] += [out]
+                        self.sect[sect] += [out]
                         out = self.readcode(f)
                 else:
                     out = self.readcode(f)
@@ -103,4 +98,5 @@ class Thumbnailimage(Section):
     None
 
 
-a = Dxf('io/Gear Sample-iss4.DXF')
+if __name__ == "__main__":
+    a = Dxf(r'../../Ressources/Piece1.DXF')
